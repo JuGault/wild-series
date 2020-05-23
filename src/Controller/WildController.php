@@ -7,11 +7,13 @@ use App\Entity\Program;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+/**
+ * @Route("/wild", name="wild_")
+ */
 Class WildController extends AbstractController
 {
     /**
-     * @Route("/wild/", name="wild_index")
+     * @Route("/", name="index")
      * @return Response A response instance
      */
     public function index() : Response
@@ -30,10 +32,10 @@ Class WildController extends AbstractController
     }
 
     /**
-     * @Route("/wild/show/{slug}",
+     * @Route("/show/{slug}",
      *     requirements={"slug"="^[a-z0-9-]+$"},
      *     defaults={"slug"=1},
-     *     name="wild_show"
+     *     name="show"
      * )
      * @param string $slug
      * @return Response
@@ -63,7 +65,7 @@ Class WildController extends AbstractController
         ]);
     }
     /**
-     * @Route("/wild/category/{categoryName}",
+     * @Route("/category/{categoryName}",
      *     name="show_category"
      * )
      * @param string $categoryName
