@@ -18,6 +18,7 @@ Class WildController extends AbstractController
      */
     public function index() : Response
     {
+        $navCategories= $this->navbarCategory();
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findAll();
@@ -27,7 +28,8 @@ Class WildController extends AbstractController
             );
         }
         return $this->render('wild/index.html.twig', [
-            'programs' => $programs
+            'programs' => $programs,
+            'nav_categories' => $navCategories
         ]);
     }
 
@@ -42,6 +44,7 @@ Class WildController extends AbstractController
      */
     public function show(?string $slug): Response
     {
+        $navCategories= $this->navbarCategory();
         if (!$slug) {
             throw $this
                 ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
@@ -62,6 +65,7 @@ Class WildController extends AbstractController
         return $this->render('wild/show.html.twig', [
             'program' => $program,
             'slug'  => $slug,
+            'nav_categories' => $navCategories
         ]);
     }
     /**
@@ -73,6 +77,7 @@ Class WildController extends AbstractController
      */
     public function showByCategory(string $categoryName) : Response
     {
+        $navCategories= $this->navbarCategory();
         if (!$categoryName) {
             throw $this->createNotFoundException(
                 'No category with '.$categoryName.' title, found in category\'s table.'
@@ -101,8 +106,21 @@ Class WildController extends AbstractController
             'wild/category.html.twig', [
             'categoryName' => $categoryName,
             'category' => $category,
-            'programs' => $programs
+            'programs' => $programs,
+            'nav_categories' => $navCategories
         ]);
+    }
+    public function navbarCategory(): array
+    {
+        $categories = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+        if (!$categories) {
+            throw $this->createNotFoundException(
+                'No categories found in category\'s table.'
+            );
+        }
+        return $categories;
     }
 
 }
