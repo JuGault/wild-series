@@ -2,24 +2,52 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('index') }}
 {% endblock %}
 
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program : </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
+    <h1 class="my-4 text-center">Toutes les séries de la table program : </h1>
+    <div class="container-fluid">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner row w-100 px-5">
+                {% for program in programs %}
+                <div class="carousel-item col-md-4 {% if loop.first %}active{% endif %}">
+                    <div class="card d-flex flex-row ">
+                        <figure>
+                            <img src="{{ program.poster }}" alt="Card image cap">
+                        </figure>
+                        <div class="card-body">
+                            <h4 class="card-title">{{ program.title }} - Catégorie : {{ program.category.name }}</h4>
+                            <p class="card-text ">{{ program.summary }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                    Aucune série trouvée.
+                {% endfor %}
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    </div>
+    <hr>
+    <div class="mt-4 d-flex justify-content-center">
+        <a  href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('index') }}
 {% endblock %}

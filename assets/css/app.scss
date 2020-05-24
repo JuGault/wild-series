@@ -1,7 +1,39 @@
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Ruluko&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
+
+$dark : #322D27;
+$orange : #FF9900;
+$white : #FBF7F2;
+
 body {
-    background-color: #322D27;
+    background-color: $dark;
 }
 .bg-orange {
-    background-color: #FF9900;
+  background-color: $orange;
+
+}
+#category {
+  appearance: none;
+  -moz-appearance: none;
+  background-color: $dark;
+  color: $white;
+  border: none;
+  text-align: center;
+  font-family: "kaushan script";
+  padding: 0.2em;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.navbar {
+ a {
+   font-family: "ruslan display";
+   outline: unset;
+   font-size: 1.5rem;
+ }
+  > a {
+      font-size: 2rem;
+    }
 }

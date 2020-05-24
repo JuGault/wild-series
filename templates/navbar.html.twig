@@ -3,16 +3,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{{ path('wild_index') }}">Accueil</a>
-            <select class="nav-item nav-link" id="choix">
-                <option value="" selected >Catégories</option>
-                {% for nav_category in nav_categories %}
-                    <option value="{{ path('wild_show_category', {categoryName: nav_category.name}) }}">{{ nav_category.name }}</option>
-                {% endfor %}
-            </select>
-            <a class="nav-item nav-link" href="#">Acteurs</a>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav d-flex w-100 justify-content-around">
+            <div class="d-flex w-25 justify-content-around">
+                <select class="" id="category">
+                    <option value="" >Catégories</option>
+                    {% for nav_category in nav_categories %}
+                        <option value="{{ path('wild_show_category', {categoryName: nav_category.name}) }}" {% if categoryName is defined %}{% if categoryName is same as(nav_category.name) %}selected{% endif %}{% endif %}>{{ nav_category.name }}</option>
+                    {% endfor %}
+                </select>
+                <a class="nav-item nav-link" href="#">Acteurs</a>
+            </div>
+            <a class="nav-item nav-link " href="{{ path('wild_index') }}">Accueil</a>
             <a class="nav-item nav-link" href="#">Favoris</a>
         </div>
     </div>
