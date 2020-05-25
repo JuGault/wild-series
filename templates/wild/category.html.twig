@@ -2,23 +2,36 @@
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
 {% endblock %}
 
 {% block title %}{{ category.name }}{% endblock %}
 
 {% block body %}
     <h1>Toutes les séries de la catégorie {{ category.name }} : </h1>
+    <div class="row col-12 d-flex justify-content-between">
     {% for program in programs %}
-        <div>
-            <h2>{{ program.id }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
-        </div>
+            <div class="card col-md-5 my-3 p-0 category-card d-flex flex-row">
+                <figure class="">
+                    <img class="h-100 " src="{{ program.poster }}" alt="Card image cap">
+                </figure>
+                <div class="card-body">
+                    <h4 class="card-title">{{ program.title }}</h4>
+                    <p class="card-text ">- Catégorie : {{ program.category.name }}</p>
+                    <p class="card-text ">{{ program.summary }}</p>
+                    <a href="{{ path('wild_show_program', {programName: program.title}) }}">voir la serie</a>
+                </div>
+            </div>
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    </div>
+
+    <div class="my-5 d-flex justify-content-center">
+        <a href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}

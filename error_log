@@ -1,0 +1,17 @@
+[25-May-2020 07:57:04 UTC] PHP Fatal error:  Class DoctrineMigrations\Version20200525075316 contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Doctrine\Migrations\AbstractMigration::down) in /home/wilder/wild-series/src/Migrations/Version20200525075316.php on line 31
+[25-May-2020 07:57:04 UTC] PHP Stack trace:
+[25-May-2020 07:57:04 UTC] PHP   1. {main}() /home/wilder/wild-series/bin/console:0
+[25-May-2020 07:57:04 UTC] PHP   2. Symfony\Bundle\FrameworkBundle\Console\Application->run() /home/wilder/wild-series/bin/console:42
+[25-May-2020 07:57:04 UTC] PHP   3. Symfony\Bundle\FrameworkBundle\Console\Application->doRun() /home/wilder/wild-series/vendor/symfony/console/Application.php:147
+[25-May-2020 07:57:04 UTC] PHP   4. Symfony\Bundle\FrameworkBundle\Console\Application->doRun() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:83
+[25-May-2020 07:57:04 UTC] PHP   5. Symfony\Bundle\FrameworkBundle\Console\Application->doRunCommand() /home/wilder/wild-series/vendor/symfony/console/Application.php:271
+[25-May-2020 07:57:04 UTC] PHP   6. Symfony\Bundle\FrameworkBundle\Console\Application->doRunCommand() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:97
+[25-May-2020 07:57:04 UTC] PHP   7. Doctrine\Bundle\MigrationsBundle\Command\MigrationsMigrateDoctrineCommand->run() /home/wilder/wild-series/vendor/symfony/console/Application.php:1019
+[25-May-2020 07:57:04 UTC] PHP   8. Doctrine\Bundle\MigrationsBundle\Command\MigrationsMigrateDoctrineCommand->initialize() /home/wilder/wild-series/vendor/symfony/console/Command/Command.php:221
+[25-May-2020 07:57:04 UTC] PHP   9. Doctrine\Bundle\MigrationsBundle\Command\DoctrineCommand::configureMigrations() /home/wilder/wild-series/vendor/doctrine/doctrine-migrations-bundle/Command/MigrationsMigrateDoctrineCommand.php:44
+[25-May-2020 07:57:04 UTC] PHP  10. Doctrine\Migrations\Configuration\Configuration->registerMigrationsFromDirectory() /home/wilder/wild-series/vendor/doctrine/doctrine-migrations-bundle/Command/DoctrineCommand.php:94
+[25-May-2020 07:57:04 UTC] PHP  11. Doctrine\Migrations\MigrationRepository->registerMigrationsFromDirectory() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/Configuration/Configuration.php:436
+[25-May-2020 07:57:04 UTC] PHP  12. Doctrine\Migrations\MigrationRepository->findMigrations() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/MigrationRepository.php:81
+[25-May-2020 07:57:04 UTC] PHP  13. Doctrine\Migrations\Finder\RecursiveRegexFinder->findMigrations() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/MigrationRepository.php:74
+[25-May-2020 07:57:04 UTC] PHP  14. Doctrine\Migrations\Finder\RecursiveRegexFinder->loadMigrations() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/Finder/RecursiveRegexFinder.php:28
+[25-May-2020 07:57:04 UTC] PHP  15. Doctrine\Migrations\Finder\Finder::requireOnce() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/Finder/Finder.php:56
