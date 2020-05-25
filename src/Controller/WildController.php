@@ -136,7 +136,7 @@ Class WildController extends AbstractController
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository(Season::class);
-        $seasons = $repository->findBy(['program_id' =>$id]);
+        $seasons = $repository->findBy(['program' =>$id]);
 
         if (!$program) {
             throw $this->createNotFoundException(
@@ -147,6 +147,50 @@ Class WildController extends AbstractController
             'programName' => $programName,
             'program' => $program,
             'seasons' => $seasons,
+            'nav_categories' => $navCategories
+        ]);
+    }
+
+    /**
+     * @Route("/season/{programName}/{seasonId}",
+     *     name="show_season"
+     * )
+     * @param string $programName
+     * @param int $seasonId
+     * @return Response
+     */
+    public function showBySeason(string $programName, int $seasonId) : Response
+    {
+        $navCategories= $this->navbarCategory();
+        if (!$programName) {
+            throw $this->createNotFoundException(
+                'No program with '.$programName.' title, found in program\'s table.'
+            );
+        }
+        if (!$seasonId) {
+            throw $this->createNotFoundException(
+                'No season with '.$seasonId.' number, found in season\'s table.'
+            );
+        }
+
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository(Season::class);
+
+        $season = $repository->findOneBy( ['id' => $seasonId] );
+        $program = $season->getProgram();
+        $episodes = $season->getEpisodes();
+
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No '.$programName.' , found in program\'s table.'
+            );
+        }
+        return $this->render('wild/season.html.twig', [
+            'programName' => $programName,
+            'program' => $program,
+            'season' => $season,
+            'episodes'=> $episodes,
             'nav_categories' => $navCategories
         ]);
     }

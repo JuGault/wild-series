@@ -8,26 +8,24 @@
 {% block title %}{{ programName }}{% endblock %}
 
 {% block body %}
-    <h1>Votre série : </h1>
+    <h1>{{ programName ~ ': saison ' ~ season.number }}</h1>
     <div class="card d-flex flex-row w-50">
         <figure class="col-5 p-0">
             <img class="w-100" src="{{ program.poster }}" alt="Card image cap">
         </figure>
         <div class="card-body col-7">
-            <h4 class="card-title">{{ program.title }}</h4>
-            <p class="card-text ">- Catégorie : {{ program.category.name }}</p>
-            <p class="card-text ">{{ program.summary }}</p>
+            <h4 class="card-title">{{ 'saison ' ~ season.number }}</h4>
+            <p class="card-text ">- Date de sortie : {{ season.year }}</p>
+            <p class="card-text ">{{ season.description }}</p>
         </div>
     </div>
     <ul>
-        <p>Liste des saisons:</p>
-        {% for season in seasons %}
+        <p>Liste des épisodes:</p>
+        {% for episode in episodes %}
             <ul>
                 <li>
-                    <p>Saison {{ season.number }}</p>
-                    <p>date de sortie : {{ season.year }}</p>
-                    <p>{{ season.description }}</p>
-                    <a href="{{ path('wild_show_season', {programName: program.title, seasonId: season.id}) }}">voir la saison</a>
+                    <p> Épisode {{ episode.number }} : {{ episode.title }}</p>
+                    <p>{{ episode.synopsis }}</p>
                 </li>
             </ul>
         {% endfor %}

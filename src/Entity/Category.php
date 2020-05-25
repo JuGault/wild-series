@@ -24,6 +24,16 @@ class Category
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Program::class, mappedBy="category")
+     */
+    private $programs;
+
+    public function __construct()
+    {
+        $this->programs = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -40,15 +50,7 @@ class Category
 
         return $this;
     }
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Program", mappedBy="category")
-     */
-    private $programs;
 
-    public function  __construct()
-    {
-        $this->programs = new ArrayCollection();
-    }
     /**
      * @return Collection|Program[]
      */
@@ -57,10 +59,6 @@ class Category
         return $this->programs;
     }
 
-    /**
-     * @param Program $program
-     * @return Category
-     */
     public function addProgram(Program $program): self
     {
         if (!$this->programs->contains($program)) {
@@ -70,10 +68,6 @@ class Category
 
         return $this;
     }
-    /**
-     * @param Program $program
-     * @return Category
-     */
 
     public function removeProgram(Program $program): self
     {

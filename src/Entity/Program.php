@@ -35,12 +35,6 @@ class Program
     private $poster;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="programs")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $country;
@@ -51,13 +45,19 @@ class Program
     private $year;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Season", mappedBy="program_id", orphanRemoval=true)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="programs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $season_id;
+    private $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Season::class, mappedBy="program", orphanRemoval=true)
+     */
+    private $seasons;
 
     public function __construct()
     {
-        $this->season_id = new ArrayCollection();
+        $this->seasons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,18 +101,6 @@ class Program
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     public function getCountry(): ?string
     {
         return $this->country;
@@ -137,34 +125,48 @@ class Program
         return $this;
     }
 
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Season[]
      */
-    public function getSeason_id(): Collection
+    public function getSeasons(): Collection
     {
-        return $this->season_id;
+        return $this->seasons;
     }
 
-    public function addSeason_id(Season $season_id): self
+    public function addSeason(Season $season): self
     {
-        if (!$this->season_id->contains($season_id)) {
-            $this->season_id[] = $season_id;
-            $season_id->setProgramId($this);
+        if (!$this->seasons->contains($season)) {
+            $this->seasons[] = $season;
+            $season->setProgram($this);
         }
 
         return $this;
     }
 
-    public function removeSeason_id(Season $season_id): self
+    public function removeSeason(Season $season): self
     {
-        if ($this->season_id->contains($season_id)) {
-            $this->season_id->removeElement($season_id);
+        if ($this->seasons->contains($season)) {
+            $this->seasons->removeElement($season);
             // set the owning side to null (unless already changed)
-            if ($season_id->getProgramId() === $this) {
-                $season_id->setProgramId(null);
+            if ($season->getProgram() === $this) {
+                $season->setProgram(null);
             }
         }
 
         return $this;
     }
+
+
 }
