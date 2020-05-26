@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+{% endblock %}
+
+{% block title %}ajout d'une catégorie{% endblock %}
+
+{% block body %}
+    <h1>Créer une catégorie: </h1>
+
+    {{ include('category/_form.html.twig') }}
+
+    <div class="my-5 d-flex justify-content-center">
+        <a href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

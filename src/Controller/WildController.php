@@ -7,6 +7,7 @@ use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\CategoryType;
+use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Location;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -217,6 +218,34 @@ Class WildController extends AbstractController
             'nav_categories' => $navCategories
         ]);
     }
+
+    /**
+     * @Route("/category_add/", name="category_add")
+     * @param Request $request
+     * @return Response A response instance
+     */
+    public function categoryAdd( Request $request) : Response
+    {
+        $navCategories= $this->navbarCategory();
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('wild_index');
+        }
+
+        return $this->render('wild/category_add.html.twig', [
+            'nav_categories' => $navCategories,
+            'category' => $category,
+            'form' => $form->createView(),
+        ]);
+    }
+
     public function navbarCategory(): array
     {
         $categories = $this->getDoctrine()
