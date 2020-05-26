@@ -3,114 +3,114 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Entity\Program;
-use App\Form\ProgramType;
-use App\Repository\ProgramRepository;
+use App\Entity\Season;
+use App\Form\SeasonType;
+use App\Repository\SeasonRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/program")
+ * @Route("/season")
  */
-class ProgramController extends AbstractController
+class SeasonController extends AbstractController
 {
     /**
-     * @Route("/", name="program_index", methods={"GET"})
-     * @param ProgramRepository $programRepository
+     * @Route("/", name="season_index", methods={"GET"})
+     * @param SeasonRepository $seasonRepository
      * @return Response
      */
-    public function index(ProgramRepository $programRepository): Response
+    public function index(SeasonRepository $seasonRepository): Response
     {
         $navCategories= $this->navbarCategory();
-        return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+        return $this->render('season/index.html.twig', [
+            'seasons' => $seasonRepository->findBy([],['program'=>'ASC']),
             'nav_categories' => $navCategories,
         ]);
     }
 
     /**
-     * @Route("/new", name="program_new", methods={"GET","POST"})
+     * @Route("/new", name="season_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
     public function new(Request $request): Response
     {
         $navCategories= $this->navbarCategory();
-        $program = new Program();
-        $form = $this->createForm(ProgramType::class, $program);
+        $season = new Season();
+        $form = $this->createForm(SeasonType::class, $season);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($program);
+            $entityManager->persist($season);
             $entityManager->flush();
 
-            return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('season_index');
         }
 
-        return $this->render('program/new.html.twig', [
-            'program' => $program,
+        return $this->render('season/new.html.twig', [
+            'season' => $season,
             'form' => $form->createView(),
             'nav_categories' => $navCategories,
         ]);
     }
 
     /**
-     * @Route("/{id}", name="program_show", methods={"GET"})
-     * @param Program $program
+     * @Route("/{id}", name="season_show", methods={"GET"})
+     * @param Season $season
      * @return Response
      */
-    public function show(Program $program): Response
+    public function show(Season $season): Response
     {
         $navCategories= $this->navbarCategory();
-        return $this->render('program/show.html.twig', [
-            'program' => $program,
+        return $this->render('season/show.html.twig', [
+            'season' => $season,
             'nav_categories' => $navCategories,
         ]);
     }
 
     /**
-     * @Route("/{id}/edit", name="program_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
      * @param Request $request
-     * @param Program $program
+     * @param Season $season
      * @return Response
      */
-    public function edit(Request $request, Program $program): Response
+    public function edit(Request $request, Season $season): Response
     {
         $navCategories= $this->navbarCategory();
-        $form = $this->createForm(ProgramType::class, $program);
+        $form = $this->createForm(SeasonType::class, $season);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('program_index');
+            return $this->redirectToRoute('season_index');
         }
 
-        return $this->render('program/edit.html.twig', [
-            'program' => $program,
+        return $this->render('season/edit.html.twig', [
+            'season' => $season,
             'form' => $form->createView(),
             'nav_categories' => $navCategories,
         ]);
     }
 
     /**
-     * @Route("/{id}", name="program_delete", methods={"DELETE"})
+     * @Route("/{id}", name="season_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Program $program
+     * @param Season $season
      * @return Response
      */
-    public function delete(Request $request, Program $program): Response
+    public function delete(Request $request, Season $season): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$season->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($program);
+            $entityManager->remove($season);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('program_index');
+        return $this->redirectToRoute('season_index');
     }
     public function navbarCategory(): array
     {

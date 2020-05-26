@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit season{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+    {{ encore_entry_link_tags('program') }}
+{% endblock %}
+{% block body %}
+    <h1 class="m-3">Mettre à jour une saison</h1>
+    <div class="d-flex justify-content-center flex-column">
+        {{ include('season/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
+
+    <div class="d-flex align-items-center">
+        <a class="btn btn-outline-primary col-5" href="{{ path('season_index') }}">Retour aux saisons</a>
+    </div>
+
+{% endblock %}
