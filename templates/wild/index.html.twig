@@ -22,7 +22,7 @@
                             <h4 class="card-title">{{ program.title }}</h4>
                             <p class="card-text ">- Catégorie : {{ program.category.name }}</p>
                             <p class="card-text ">{{ program.summary }}</p>
-                            <a href="{{ path('wild_show_program', {programName: program.title}) }}">voir la serie</a>
+                            <a class="btn btn-outline-primary" href="{{ path('wild_show_program', {programName: program.title}) }}">voir la serie</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
     </div>
     <hr>
     <div class="my-5 d-flex justify-content-center">
-        <a  href="{{ path('app_index') }}">
+        <a class="btn btn-outline-primary"  href="{{ path('app_index') }}">
             Retour à l'accueil
         </a>
     </div>

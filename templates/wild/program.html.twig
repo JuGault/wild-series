@@ -27,13 +27,13 @@
                     <p>Saison {{ season.number }}</p>
                     <p>date de sortie : {{ season.year }}</p>
                     <p>{{ season.description }}</p>
-                    <a href="{{ path('wild_show_season', {programName: program.title, seasonId: season.id}) }}">voir la saison</a>
+                    <a class="btn btn-outline-primary" href="{{ path('wild_show_season', {programName: program.title, seasonId: season.id}) }}">voir la saison</a>
                 </li>
             </ul>
         {% endfor %}
     </ul>
     <div class="my-5 d-flex justify-content-center">
-        <a href="{{ path('app_index') }}">
+        <a class="btn btn-outline-primary" href="{{ path('app_index') }}">
             Retour à l'accueil
         </a>
     </div>

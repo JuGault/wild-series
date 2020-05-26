@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+{% endblock %}
+
+{% block title %}{{ program.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ program.title ~ ' : saison ' ~ season.number }}</h1>
+    <div class="card d-flex flex-row w-50">
+        <figure class="col-5 p-0">
+            <img class="w-100" src="{{ program.poster }}" alt="Card image cap">
+        </figure>
+        <div class="card-body col-7">
+            <h4 class="card-title">{{ 'Épisode ' ~ episode.number }} : {{ episode.title }}</h4>
+            <p class="card-text ">{{ episode.synopsis }}</p>
+            <div class="d-flex justify-content-around">
+                <a class="btn btn-outline-primary" href="{{ path('wild_show_season', {programName: program.title, seasonId: season.id}) }}">voir la saison</a>
+                <a class="btn btn-outline-primary" href="{{ path('wild_show_program', {programName: program.title}) }}">voir la serie</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="my-5 d-flex justify-content-center">
+        <a class="btn btn-outline-primary" href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}

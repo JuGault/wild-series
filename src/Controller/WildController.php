@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -121,11 +122,6 @@ Class WildController extends AbstractController
     public function showByProgram(string $programName) : Response
     {
         $navCategories= $this->navbarCategory();
-        if (!$programName) {
-            throw $this->createNotFoundException(
-                'No program with '.$programName.' title, found in program\'s table.'
-            );
-        }
 
         $repository = $this->getDoctrine()
             ->getManager()
@@ -141,6 +137,11 @@ Class WildController extends AbstractController
         if (!$program) {
             throw $this->createNotFoundException(
                 'No '.$programName.' , found in program\'s table.'
+            );
+        }
+        if (!$seasons) {
+            throw $this->createNotFoundException(
+                'No season with '.$seasons.' number, found in season\'s table.'
             );
         }
         return $this->render('wild/program.html.twig', [
@@ -162,16 +163,6 @@ Class WildController extends AbstractController
     public function showBySeason(string $programName, int $seasonId) : Response
     {
         $navCategories= $this->navbarCategory();
-        if (!$programName) {
-            throw $this->createNotFoundException(
-                'No program with '.$programName.' title, found in program\'s table.'
-            );
-        }
-        if (!$seasonId) {
-            throw $this->createNotFoundException(
-                'No season with '.$seasonId.' number, found in season\'s table.'
-            );
-        }
 
         $repository = $this->getDoctrine()
             ->getManager()
@@ -180,7 +171,11 @@ Class WildController extends AbstractController
         $season = $repository->findOneBy( ['id' => $seasonId] );
         $program = $season->getProgram();
         $episodes = $season->getEpisodes();
-
+        if (!$season) {
+            throw $this->createNotFoundException(
+                'No season with '.$season.' number, found in season\'s table.'
+            );
+        }
         if (!$program) {
             throw $this->createNotFoundException(
                 'No '.$programName.' , found in program\'s table.'
@@ -191,6 +186,26 @@ Class WildController extends AbstractController
             'program' => $program,
             'season' => $season,
             'episodes'=> $episodes,
+            'nav_categories' => $navCategories
+        ]);
+    }
+
+    /**
+     * @Route("/episode/{id}",
+     *     name="show_episode"
+     * )
+     * @param Episode $episode
+     * @return Response
+     */
+    public function showEpisode(Episode $episode) : Response
+    {
+        $navCategories= $this->navbarCategory();
+       $season = $episode->getSeason();
+       $program = $season->getProgram();
+        return $this->render('wild/episode.html.twig', [
+            'program' => $program,
+            'season' => $season,
+            'episode'=> $episode,
             'nav_categories' => $navCategories
         ]);
     }

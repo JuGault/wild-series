@@ -25,13 +25,13 @@
             <ul>
                 <li>
                     <p> Épisode {{ episode.number }} : {{ episode.title }}</p>
-                    <p>{{ episode.synopsis }}</p>
+                    <a class="btn btn-outline-primary" href="{{ path('wild_show_episode', {id: episode.id}) }}">voir l'épisode</a>
                 </li>
             </ul>
         {% endfor %}
     </ul>
     <div class="my-5 d-flex justify-content-center">
-        <a href="{{ path('app_index') }}">
+        <a class="btn btn-outline-primary" href="{{ path('app_index') }}">
             Retour à l'accueil
         </a>
     </div>
