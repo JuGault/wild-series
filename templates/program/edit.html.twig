@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Program{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+    {{ encore_entry_link_tags('program') }}
+{% endblock %}
+{% block body %}
+    <h1 class="m-3">Mettre à jour une série</h1>
+    <div class="d-flex justify-content-center flex-column">
+        {{ include('program/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+
+<div class="d-flex align-items-center">
+    <a class="btn btn-outline-primary col-5" href="{{ path('program_index') }}">Retour aux séries</a>
+</div>
+
+
+
+{% endblock %}
