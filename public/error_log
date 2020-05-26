@@ -2,3 +2,17 @@
 [21-May-2020 11:03:54 UTC] 2020-05-21T11:03:54+00:00 [critical] Uncaught Error: syntax error, unexpected '::' (T_PAAMAYIM_NEKUDOTAYIM), expecting ']'
 [21-May-2020 11:08:18 UTC] 2020-05-21T11:08:18+00:00 [critical] Uncaught Error: syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting ']'
 [26-May-2020 10:56:55 UTC] 2020-05-26T10:56:55+00:00 [critical] Uncaught Error: syntax error, unexpected end of file, expecting function (T_FUNCTION) or const (T_CONST)
+[26-May-2020 19:28:28 UTC] PHP Fatal error:  Class App\Entity\Episode contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Countable::count) in /home/wilder/wild-series/src/Entity/Episode.php on line 11
+[26-May-2020 19:28:28 UTC] PHP Stack trace:
+[26-May-2020 19:28:28 UTC] PHP   1. {main}() /home/wilder/.symfony/php/821fa2c7c4b26d0534e0a4c239864b0ff221c133-router.php:0
+[26-May-2020 19:28:28 UTC] PHP   2. require() /home/wilder/.symfony/php/821fa2c7c4b26d0534e0a4c239864b0ff221c133-router.php:29
+[26-May-2020 19:28:28 UTC] PHP   3. App\Kernel->handle() /home/wilder/wild-series/public/index.php:25
+[26-May-2020 19:28:28 UTC] PHP   4. App\Kernel->boot() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:196
+[26-May-2020 19:28:28 UTC] PHP   5. App\Kernel->initializeContainer() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:136
+[26-May-2020 19:28:28 UTC] PHP   6. Symfony\Component\DependencyInjection\ContainerBuilder->compile() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:599
+[26-May-2020 19:28:28 UTC] PHP   7. Symfony\Component\DependencyInjection\Compiler\Compiler->compile() /home/wilder/wild-series/vendor/symfony/dependency-injection/ContainerBuilder.php:762
+[26-May-2020 19:28:28 UTC] PHP   8. Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass->process() /home/wilder/wild-series/vendor/symfony/dependency-injection/Compiler/Compiler.php:94
+[26-May-2020 19:28:28 UTC] PHP   9. class_exists() /home/wilder/wild-series/vendor/symfony/http-kernel/DependencyInjection/RegisterControllerArgumentLocatorsPass.php:165
+[26-May-2020 19:28:28 UTC] PHP  10. spl_autoload_call() /home/wilder/wild-series/vendor/symfony/http-kernel/DependencyInjection/RegisterControllerArgumentLocatorsPass.php:165
+[26-May-2020 19:28:28 UTC] PHP  11. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/http-kernel/DependencyInjection/RegisterControllerArgumentLocatorsPass.php:165
+[26-May-2020 19:28:28 UTC] PHP  12. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
