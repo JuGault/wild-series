@@ -6,9 +6,13 @@ use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Form\CategoryType;
+use phpDocumentor\Reflection\Location;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * @Route("/wild", name="wild_")
  */
@@ -16,9 +20,10 @@ Class WildController extends AbstractController
 {
     /**
      * @Route("/", name="index")
+     * @param Request $request
      * @return Response A response instance
      */
-    public function index() : Response
+    public function index(Request $request) : Response
     {
         $navCategories= $this->navbarCategory();
         $programs = $this->getDoctrine()
@@ -29,9 +34,12 @@ Class WildController extends AbstractController
                 'No program found in program\'s table.'
             );
         }
+
+
         return $this->render('wild/index.html.twig', [
             'programs' => $programs,
-            'nav_categories' => $navCategories
+            'nav_categories' => $navCategories,
+
         ]);
     }
 
