@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Episode;
+use App\Entity\Season;
 use App\Form\EpisodeType;
 use App\Repository\EpisodeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -122,5 +123,8 @@ class EpisodeController extends AbstractController
         }
         return $categories;
     }
-
+    public function  getSeasonName(Episode $episode)
+    {
+        return (($episode -> getSeason()) -> getProgram()) -> getTitle();
+    }
 }
