@@ -4,28 +4,46 @@
         <div class="d-flex flex-column">
             {{ form_label(form.title, 'Titre de la série') }}
             {{ form_widget(form.title) }}
+            {% for error in form.title.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.poster, 'Image') }}
             {{ form_widget(form.poster) }}
+            {% for error in form.poster.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.country, 'Pays de production') }}
             {{ form_widget(form.country) }}
+            {% for error in form.country.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.year, 'Année de production') }}
             {{ form_widget(form.year) }}
+            {% for error in form.year.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.category, 'Catégorie de la série') }}
             {{ form_widget(form.category) }}
+            {% for error in form.category.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
     </div>
 
     <div class="d-flex flex-column col-7">
         {{ form_label(form.summary, 'Description de la série') }}
         {{ form_widget(form.summary, {'attr': {'cols': '30','class': 'h-100'}}) }}
+        {% for error in form.summary.vars.errors %}
+            <p class="text-danger">{{ error.message }}</p>
+        {% endfor %}
     </div>
 </div>
 

@@ -1,4 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
+{% for error in form.name.vars.errors %}
+    <p class="text-danger">{{ error.message }}</p>
+{% endfor %}
 {{ form_end(form) }}

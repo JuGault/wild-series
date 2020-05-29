@@ -8,20 +8,32 @@
                     <option value="{{ choice.value }}" {% if choice.value == episode.season.id %}selected{% endif %}>{{ choice.data.program.title ~ ' saison ' ~ choice.data.number }}</option>
                 {% endfor %}
             </select>
+            {% for error in form.season.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.number, 'Numéro de l\'épisode') }}
             {{ form_widget(form.number) }}
+            {% for error in form.number.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
         <div class="d-flex flex-column">
             {{ form_label(form.title, 'Titre de l\'épisode') }}
             {{ form_widget(form.title) }}
+            {% for error in form.title.vars.errors %}
+                <p class="text-danger">{{ error.message }}</p>
+            {% endfor %}
         </div>
     </div>
 
     <div class="d-flex flex-column col-7">
         {{ form_label(form.synopsis, 'Description de l\'épisode') }}
         {{ form_widget(form.synopsis, {'attr': {'cols': '30','class': 'h-100'}}) }}
+        {% for error in form.synopsis.vars.errors %}
+            <p class="text-danger">{{ error.message }}</p>
+        {% endfor %}
     </div>
 </div>
 
