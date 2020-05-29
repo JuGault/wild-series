@@ -1,0 +1,14 @@
+@import "app";
+
+.program-card {
+  height: 25vh;
+  border: unset;
+  & figure {
+    height: 100%;
+  }
+}
+label {
+  color: $orange;
+  font-family: "ruslan display";
+  margin-top: 2%;
+}

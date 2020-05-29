@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Program{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+{% endblock %}
+{% block body %}
+    <h1>Create new Program</h1>
+
+    {{ include('program/_form.html.twig') }}
+<div class="d-flex justify-content-center">
+    <a class="btn btn-outline-primary col-5" href="{{ path('program_index') }}">Retour aux séries</a>
+</div>
+
+{% endblock %}

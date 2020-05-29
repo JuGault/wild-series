@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New episode{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+{% endblock %}
+{% block body %}
+    <h1>Create new Episode</h1>
+
+    {{ include('episode/_form.html.twig') }}
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-outline-primary col-5" href="{{ path('episode_index') }}">Retour aux épisodes</a>
+    </div>
+
+{% endblock %}
+

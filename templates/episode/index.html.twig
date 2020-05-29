@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episode index{% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('program') }}
+        {{ encore_entry_link_tags('programAdmin') }}
+    {% endblock %}
+
+{% block body %}
+    <h1 class="mt-3">Tous les épisodes</h1>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-outline-primary col-5" href="{{ path('episode_new') }}">Ajouter un épisode</a>
+    </div>
+    <div class="row col-12 d-flex justify-content-around">
+        {% for episode in episodes %}
+
+            <div class="col-md-3 m-3 p-0  d-flex flex-column">
+                <div class=" card d-flex program-card flex-row">
+                    <figure class="col-4 p-0 ">
+                        <img class="h-100 col-12 p-0" src="{{ episode.season.program.poster }}" alt="Card image cap">
+                    </figure>
+                    <div class="card-body overflow-auto">
+                        <h4 class="card-title">{{ episode.season.program.title }} - saison {{ episode.season.number }} </h4>
+                        <p class="card-text">Épisode {{ episode.number }} : {{ episode.title }}</p>
+                        <p class="card-text ">{{ episode.synopsis }}</p>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_show', {'id': episode.id}) }}">Voir</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_edit', {'id': episode.id}) }}">Modifier</a>
+                </div>
+            </div>
+        {% else %}
+            Aucune épisode trouvé.
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+

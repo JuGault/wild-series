@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Season{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+{% endblock %}
+{% block body %}
+    <h1 class="my-3">{{ episode.season.program.title }} - saison {{ episode.season.number }}</h1>
+
+    <div class=" card d-flex program-card flex-row  offset-2 col-8 h-50 p-0">
+        <figure class="col-4 p-0 m-0">
+            <img class="h-100 col-12 p-0" src="{{ episode.season.program.poster }}" alt="Card image cap">
+        </figure>
+        <div class="card-body overflow-auto">
+            <h4 class="card-title">Épisode {{ episode.number }} - {{ episode.title }} </h4>
+            <p class="card-text ">{{ episode.synopsis }}</p>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column">
+        <a class="btn btn-outline-primary col-5" href="{{ path('episode_edit', {'id': episode.id}) }}">Modifier</a>
+        {{ include('episode/_delete_form.html.twig') }}
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-primary col-5" href="{{ path('episode_index') }}">Retour aux saisons</a>
+
+        </div>
+    </div>
+
+{% endblock %}
+
