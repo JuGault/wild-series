@@ -21,3 +21,7 @@ https://www.loom.com/share/6d23136a22aa4ee4b47ab4e6996450ee
 Partie many to many 
 
 https://www.loom.com/share/0c37b1b05de64b9f80d36de188faf9d3
+
+Partie Fixture
+
+https://www.loom.com/share/b223ca416cd64ba79489aa10b936e9b8

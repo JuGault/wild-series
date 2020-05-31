@@ -15,3 +15,37 @@
 [25-May-2020 07:57:04 UTC] PHP  13. Doctrine\Migrations\Finder\RecursiveRegexFinder->findMigrations() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/MigrationRepository.php:74
 [25-May-2020 07:57:04 UTC] PHP  14. Doctrine\Migrations\Finder\RecursiveRegexFinder->loadMigrations() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/Finder/RecursiveRegexFinder.php:28
 [25-May-2020 07:57:04 UTC] PHP  15. Doctrine\Migrations\Finder\Finder::requireOnce() /home/wilder/wild-series/vendor/doctrine/migrations/lib/Doctrine/Migrations/Finder/Finder.php:56
+[31-May-2020 16:06:47 UTC] PHP Fatal error:  Class App\DataFixtures\ActorFixtures contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Doctrine\Common\DataFixtures\FixtureInterface::load) in /home/wilder/wild-series/src/DataFixtures/ActorFixtures.php on line 12
+[31-May-2020 16:06:47 UTC] PHP Stack trace:
+[31-May-2020 16:06:47 UTC] PHP   1. {main}() /home/wilder/wild-series/bin/console:0
+[31-May-2020 16:06:47 UTC] PHP   2. Symfony\Bundle\FrameworkBundle\Console\Application->run() /home/wilder/wild-series/bin/console:42
+[31-May-2020 16:06:47 UTC] PHP   3. Symfony\Bundle\FrameworkBundle\Console\Application->doRun() /home/wilder/wild-series/vendor/symfony/console/Application.php:147
+[31-May-2020 16:06:47 UTC] PHP   4. Symfony\Bundle\FrameworkBundle\Console\Application->registerCommands() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:75
+[31-May-2020 16:06:47 UTC] PHP   5. App\Kernel->boot() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:169
+[31-May-2020 16:06:47 UTC] PHP   6. App\Kernel->initializeContainer() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:136
+[31-May-2020 16:06:47 UTC] PHP   7. Symfony\Component\Config\ConfigCache->isFresh() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:517
+[31-May-2020 16:06:47 UTC] PHP   8. Symfony\Component\Config\ConfigCache->isFresh() /home/wilder/wild-series/vendor/symfony/config/ConfigCache.php:60
+[31-May-2020 16:06:47 UTC] PHP   9. Symfony\Component\Config\Resource\SelfCheckingResourceChecker->isFresh() /home/wilder/wild-series/vendor/symfony/config/ResourceCheckerConfigCache.php:99
+[31-May-2020 16:06:47 UTC] PHP  10. Symfony\Component\Config\Resource\ReflectionClassResource->isFresh() /home/wilder/wild-series/vendor/symfony/config/Resource/SelfCheckingResourceChecker.php:34
+[31-May-2020 16:06:47 UTC] PHP  11. Symfony\Component\Config\Resource\ReflectionClassResource->computeHash() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:52
+[31-May-2020 16:06:47 UTC] PHP  12. ReflectionClass->__construct() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 16:06:47 UTC] PHP  13. spl_autoload_call() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 16:06:47 UTC] PHP  14. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 16:06:47 UTC] PHP  15. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
+[31-May-2020 17:34:02 UTC] PHP Fatal error:  Class App\DataFixtures\ActorFixtures contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (Doctrine\Common\DataFixtures\DependentFixtureInterface::getDependencies) in /home/wilder/wild-series/src/DataFixtures/ActorFixtures.php on line 10
+[31-May-2020 17:34:02 UTC] PHP Stack trace:
+[31-May-2020 17:34:02 UTC] PHP   1. {main}() /home/wilder/wild-series/bin/console:0
+[31-May-2020 17:34:02 UTC] PHP   2. Symfony\Bundle\FrameworkBundle\Console\Application->run() /home/wilder/wild-series/bin/console:42
+[31-May-2020 17:34:02 UTC] PHP   3. Symfony\Bundle\FrameworkBundle\Console\Application->doRun() /home/wilder/wild-series/vendor/symfony/console/Application.php:147
+[31-May-2020 17:34:02 UTC] PHP   4. Symfony\Bundle\FrameworkBundle\Console\Application->registerCommands() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:75
+[31-May-2020 17:34:02 UTC] PHP   5. App\Kernel->boot() /home/wilder/wild-series/vendor/symfony/framework-bundle/Console/Application.php:169
+[31-May-2020 17:34:02 UTC] PHP   6. App\Kernel->initializeContainer() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:136
+[31-May-2020 17:34:02 UTC] PHP   7. Symfony\Component\Config\ConfigCache->isFresh() /home/wilder/wild-series/vendor/symfony/http-kernel/Kernel.php:517
+[31-May-2020 17:34:02 UTC] PHP   8. Symfony\Component\Config\ConfigCache->isFresh() /home/wilder/wild-series/vendor/symfony/config/ConfigCache.php:60
+[31-May-2020 17:34:02 UTC] PHP   9. Symfony\Component\Config\Resource\SelfCheckingResourceChecker->isFresh() /home/wilder/wild-series/vendor/symfony/config/ResourceCheckerConfigCache.php:99
+[31-May-2020 17:34:02 UTC] PHP  10. Symfony\Component\Config\Resource\ReflectionClassResource->isFresh() /home/wilder/wild-series/vendor/symfony/config/Resource/SelfCheckingResourceChecker.php:34
+[31-May-2020 17:34:02 UTC] PHP  11. Symfony\Component\Config\Resource\ReflectionClassResource->computeHash() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:52
+[31-May-2020 17:34:02 UTC] PHP  12. ReflectionClass->__construct() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 17:34:02 UTC] PHP  13. spl_autoload_call() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 17:34:02 UTC] PHP  14. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
+[31-May-2020 17:34:02 UTC] PHP  15. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
