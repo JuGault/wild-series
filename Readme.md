@@ -25,3 +25,7 @@ https://www.loom.com/share/0c37b1b05de64b9f80d36de188faf9d3
 Partie Fixture
 
 https://www.loom.com/share/b223ca416cd64ba79489aa10b936e9b8
+
+partie Slugify
+
+https://www.loom.com/share/49e7255911dd4d57a64ecf562ec27e0a

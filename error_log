@@ -49,3 +49,4 @@
 [31-May-2020 17:34:02 UTC] PHP  13. spl_autoload_call() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
 [31-May-2020 17:34:02 UTC] PHP  14. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
 [31-May-2020 17:34:02 UTC] PHP  15. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
+[31-May-2020 21:43:44 UTC] 2020-05-31T21:43:44+00:00 [critical] Uncaught Error: syntax error, unexpected ')'

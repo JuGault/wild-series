@@ -21,7 +21,7 @@
                 <strong>Acteur(s) :</strong>
                 <ul>
                     {% for actor in program.actors %}
-                        <li><a href="{{ path('wild_show_actor', {id: actor.id}) }}">{{ actor.name }}</a></li>
+                        <li><a href="{{ path('actor_show', {slug: actor.slug}) }}">{{ actor.name }}</a></li>
                     {% else %}
                         <li>Aucun acteur pour cette série</li>
                     {% endfor %}
@@ -30,7 +30,7 @@
         </div>
 
     <div class="d-flex flex-column">
-        <a class="btn btn-outline-primary col-5" href="{{ path('program_edit', {'id': program.id}) }}">Modifier</a>
+        <a class="btn btn-outline-primary col-5" href="{{ path('program_edit', {'slug': program.slug}) }}">Modifier</a>
         {{ include('program/_delete_form.html.twig') }}
         <div class="d-flex justify-content-center">
             <a class="btn btn-outline-primary col-5" href="{{ path('program_index') }}">Retour aux séries</a>
