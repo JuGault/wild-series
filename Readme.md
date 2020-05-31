@@ -17,3 +17,7 @@ https://www.loom.com/share/bde52d8e1233489688c9e2b8856d3cd2
 partie actor 
 
 https://www.loom.com/share/6d23136a22aa4ee4b47ab4e6996450ee
+
+Partie many to many 
+
+https://www.loom.com/share/0c37b1b05de64b9f80d36de188faf9d3

@@ -1,4 +1,5 @@
 {{ form_start(form, {'attr': {'class': 'offset-2 col-8'}}) }}
+{{ dump(form.actors) }}
 <div class="d-flex flex-row justify-content-around">
     <div class="d-flex flex-column col-4">
         <div class="d-flex flex-column">
@@ -20,6 +21,10 @@
         <div class="d-flex flex-column">
             {{ form_label(form.category, 'Catégorie de la série') }}
             {{ form_widget(form.category) }}
+        </div>
+        <div class="d-flex flex-column">
+            {{ form_label(form.actors, 'Acteur de la série') }}
+            {{ form_widget(form.actors) }}
         </div>
     </div>
 
