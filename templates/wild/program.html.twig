@@ -17,6 +17,14 @@
             <h4 class="card-title">{{ program.title }}</h4>
             <p class="card-text ">- Catégorie : {{ program.category.name }}</p>
             <p class="card-text ">{{ program.summary }}</p>
+            <strong>Acteur(s) :</strong>
+            <ul>
+                {% for actor in program.actors %}
+                    <li>{{ actor.name }} </li>
+                {% else %}
+                    <li>Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
     <ul>

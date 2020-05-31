@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('index') }}
+{% endblock %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Tous les acteurs de la table actor : </h1>
+    <ul>
+        {% for actor in actors %}
+            <li>{{ actor.name }}</li>
+                <ul>
+                    {{ dump(actor) }}
+                </ul>
+        {% else %}
+            <li>Aucun acteur pour cette série</li>
+        {% endfor %}
+    </ul>
+
+    <div class="my-5 d-flex justify-content-center">
+        <a class="btn btn-outline-primary"  href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('index') }}
+{% endblock %}
