@@ -25,7 +25,7 @@ class Actor
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
+     * @ORM\ManyToMany(targetEntity=Program::class, mappedBy="actors")
      */
     private $programs;
 

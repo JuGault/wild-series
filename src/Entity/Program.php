@@ -56,7 +56,7 @@ class Program
     private $seasons;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")
+     * @ORM\ManyToMany(targetEntity=Actor::class, inversedBy="programs")
      */
     private $actors;
 
