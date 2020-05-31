@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="d-flex justify-content-around">
-                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_show', {'id': episode.id}) }}">Voir</a>
-                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_edit', {'id': episode.id}) }}">Modifier</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_show', {'slug': episode.slug}) }}">Voir</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('episode_edit', {'slug': episode.slug}) }}">Modifier</a>
                 </div>
             </div>
         {% else %}

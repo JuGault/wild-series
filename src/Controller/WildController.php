@@ -173,11 +173,7 @@ Class WildController extends AbstractController
                 'No '.$programName.' , found in program\'s table.'
             );
         }
-        if (!$seasons) {
-            throw $this->createNotFoundException(
-                'No season with '.$seasons.' number, found in season\'s table.'
-            );
-        }
+
         return $this->render('wild/program.html.twig', [
             'programName' => $programName,
             'program' => $program,

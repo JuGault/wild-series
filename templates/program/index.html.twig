@@ -26,8 +26,8 @@
                 </div>
 
                 <div class="d-flex justify-content-around">
-                    <a class="btn btn-outline-primary col-5" href="{{ path('program_show', {'id': program.id}) }}">Voir</a>
-                    <a class="btn btn-outline-primary col-5" href="{{ path('program_edit', {'id': program.id}) }}">Modifier</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('program_show', {'slug': program.slug}) }}">Voir</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('program_edit', {'slug': program.slug}) }}">Modifier</a>
                 </div>
             </div>
         {% else %}
