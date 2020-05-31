@@ -12,7 +12,7 @@
                         <option value="{{ path('wild_show_category', {categoryName: nav_category.name}) }}" {% if categoryName is defined %}{% if categoryName is same as(nav_category.name) %}selected{% endif %}{% endif %}>{{ nav_category.name }}</option>
                     {% endfor %}
                 </select>
-                <a class="nav-item nav-link" href="#">Acteurs</a>
+                <a class="nav-item nav-link" href="{{ path('wild_index_actor') }}">Acteurs</a>
             </div>
             <a class="nav-item nav-link " href="{{ path('wild_index') }}">Accueil</a>
             <a class="nav-item nav-link " href="{{ path('program_index') }}">Series</a>

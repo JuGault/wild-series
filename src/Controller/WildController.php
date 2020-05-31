@@ -2,6 +2,7 @@
 // src/Controller/WildController.php
 namespace App\Controller;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
@@ -39,6 +40,30 @@ Class WildController extends AbstractController
 
         return $this->render('wild/index.html.twig', [
             'programs' => $programs,
+            'nav_categories' => $navCategories,
+
+        ]);
+    }
+    /**
+     * @Route("/actors", name="index_actor")
+     * @param Request $request
+     * @return Response A response instance
+     */
+    public function indexActor(Request $request) : Response
+    {
+        $navCategories= $this->navbarCategory();
+        $actors = $this->getDoctrine()
+            ->getRepository(Actor::class)
+            ->findAll();
+        if (!$actors) {
+            throw $this->createNotFoundException(
+                'No actors found in actor\'s table.'
+            );
+        }
+
+
+        return $this->render('wild/index_actor.html.twig', [
+            'actors' => $actors,
             'nav_categories' => $navCategories,
 
         ]);
@@ -219,6 +244,21 @@ Class WildController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/actor/{id}",
+     *     name="show_actor"
+     * )
+     * @param Actor $actor
+     * @return Response
+     */
+    public function showActor(Actor $actor) : Response
+    {
+        $navCategories= $this->navbarCategory();
+        return $this->render('wild/actor.html.twig', [
+            'actor'=> $actor,
+            'nav_categories' => $navCategories
+        ]);
+    }
     /**
      * @Route("/category_add/", name="category_add")
      * @param Request $request

@@ -13,3 +13,7 @@ https://www.loom.com/share/deda68af1a8f4bfb950e8ae63fe81a67
 partie admin
 
 https://www.loom.com/share/bde52d8e1233489688c9e2b8856d3cd2
+
+partie actor 
+
+https://www.loom.com/share/6d23136a22aa4ee4b47ab4e6996450ee

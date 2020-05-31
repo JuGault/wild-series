@@ -5,15 +5,15 @@
     {{ encore_entry_link_tags('program') }}
 {% endblock %}
 
-{% block title %}{{ actor.name }}{% endblock %}
+{% block title %}tous les acteurs{% endblock %}
 
 {% block body %}
-    <h1 class="my-5 text-center">Toutes les series de {{ actor.name }} : </h1>
+    <h1 class="my-5 text-center">Tous les acteurs de la table actor : </h1>
     <ul>
-        {% for program in actor.programs %}
+        {% for actor in actors %}
             <li>
-                <p>{{ program.title }}</p>
-                <a class="btn btn-outline-primary" href="{{ path('wild_show_program', {programName: program.title}) }}">voir la série</a>
+                <p>{{ actor.name }}</p>
+                <a class="btn btn-outline-primary" href="{{ path('wild_show_actor', {id: actor.id}) }}">voir l'acteur</a>
             </li>
 
         {% else %}
