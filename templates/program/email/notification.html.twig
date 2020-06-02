@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email de notification</title>
+
+</head>
+<body style="background-color: black;">
+<div style="display: flex; flex-direction: row; width: 50vw; margin: 5% auto; border: 1px solid #322D27;">
+    <figure style="width: 40%;">
+        <img style="width: 100%;" src="{{ program.poster }}" alt="Card image cap">
+    </figure>
+    <div style="background-color:  #322D27;color: #FBF7F2; width: 60%; padding: 3%; ">
+        <h4 style="color: #FF9900; ">{{ program.title }}</h4>
+        <p style="color: #FBF7F2;">- synopsis : {{ program.summary }}</p>
+        <a  style="color:#FF9900; " href="https://127.0.0.1:8000/program/{{ program.slug }}">voir la serie</a>
+    </div>
+</div>
+<p style="color:#FBF7F2; margin: 2% 25%; ">Une nouvelle série vient d'être publiée sur Wild Séries !</p>
+</body>
+</html>
+
+
