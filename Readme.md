@@ -29,3 +29,7 @@ https://www.loom.com/share/b223ca416cd64ba79489aa10b936e9b8
 partie Slugify
 
 https://www.loom.com/share/49e7255911dd4d57a64ecf562ec27e0a
+
+partie Mailer
+
+https://www.loom.com/share/0931846484064fde810ae0e814c30d4b
