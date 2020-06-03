@@ -23,6 +23,27 @@
 
         </div>
     </div>
+    {% if app.user %}
+    <div class="d-flex flex-column justify-content-center user-commentary">
+        <h4 class="text-center my-3">Laisser un commentaire:</h4>
+        {{ include('comment/_form.html.twig') }}
+    </div>
+    {% endif %}
+    <div class="d-flex flex-column align-items-center col-12 comments">
+            <h4 >Commentaires:</h4>
+            <div class="d-flex flex-column col-6 ">
+                {% for comment in comments %}
+                    <div class="user-commentary my-4 border ">
+                        <div class="p-3 bg-dark d-flex justify-content-between">
+                            <p>note {{ comment.rate }}/10</p>
+                            <p >{{ comment.author.username ~ ' posté le ' ~ comment.date.format('Y-m-d H:i:s') }}</p>
+                        </div>
+                        <p class="p-3 bg-orange">{{ comment.comment }}</p>
+                    </div>
+
+                {% endfor %}
+            </div>
+    </div>
     <div class="my-5 d-flex justify-content-center">
         <a class="btn btn-outline-primary" href="{{ path('app_index') }}">
             Retour à l'accueil

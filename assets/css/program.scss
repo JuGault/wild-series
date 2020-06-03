@@ -47,3 +47,35 @@ ul:first-of-type {
     height: 100%;
   }
 }
+.commentary {
+  background-color: $dark;
+  & label {
+    color: $white;
+  }
+  & textarea {
+    height: 200px;
+  }
+}
+.user-commentary {
+  & div > p {
+    font-family: "kaushan script";
+    color: $white;
+  }
+  & p {
+
+    font-family: "roluko" ;
+  }
+  & h4 {
+    color: $orange;
+    font-family: "ruslan display";
+
+  }
+}
+.comments {
+  & h4 {
+    margin: 3% 0;
+    text-align: center;
+    font-family: "ruslan display";
+    color: $orange;
+  }
+}
