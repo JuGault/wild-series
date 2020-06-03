@@ -33,3 +33,7 @@ https://www.loom.com/share/49e7255911dd4d57a64ecf562ec27e0a
 partie Mailer
 
 https://www.loom.com/share/0931846484064fde810ae0e814c30d4b
+
+partie connexion 
+
+https://www.loom.com/share/b7be4114ca9e4460afa117af51729809

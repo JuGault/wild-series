@@ -1,15 +1,15 @@
 <?php
-// src/Controller/WildController.php
 namespace App\Controller;
 
 use App\Entity\Actor;
 use App\Entity\Category;
+use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
+use App\Entity\User;
 use App\Form\CategoryType;
-use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Location;
+use App\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -225,18 +225,37 @@ Class WildController extends AbstractController
      *     name="show_episode"
      * )
      * @param Episode $episode
+     * @param Request $request
      * @return Response
      */
-    public function showEpisode(Episode $episode) : Response
+    public function showEpisode(Episode $episode, Request $request) : Response
     {
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $comment->setAuthor($this->getUser());
+            $comment->setDate($date = new \DateTime());
+            $comment->setEpisode($episode);
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            return $this->redirectToRoute('wild_show_episode', ['id' => $episode->getId()]);
+        }
         $navCategories= $this->navbarCategory();
-       $season = $episode->getSeason();
-       $program = $season->getProgram();
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findBy(['episode'=> $episode->getId()], ['date' => 'ASC']);
         return $this->render('wild/episode.html.twig', [
             'program' => $program,
             'season' => $season,
             'episode'=> $episode,
-            'nav_categories' => $navCategories
+            'comments' => $comments,
+            'nav_categories' => $navCategories,
+            'form' => $form->createView()
         ]);
     }
 
