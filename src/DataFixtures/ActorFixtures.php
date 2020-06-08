@@ -19,6 +19,7 @@ class ActorFixtures extends Fixture
         for ($i=0; $i<=50; $i++){
             $actor = new actor();
             $actor->setName($faker->name);
+            $actor->setBirthday($faker->date('Y-m-d'));
             $slug = $slugify->generate($actor->getName());
             $actor->setSlug($slug);
             $this->addReference('actor_' . $k, $actor);

@@ -22,6 +22,8 @@
                     <div class="card-body overflow-auto">
                         <h4 class="card-title">{{ program.title }}</h4>
                         <p class="card-text ">{{ program.summary }}</p>
+                        <p><strong>Acteurs : </strong>{% if program.actors is not empty %}{% set acteurs = [] %}{%  for actor in program.actors %}{% set acteurs = acteurs|merge([actor.name]) %}{% endfor %}{{ acteurs|join(' , ')  }}{% else  %}Aucun acteurs disponible{% endif %}</p>
+
                     </div>
                 </div>
 

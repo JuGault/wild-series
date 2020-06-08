@@ -43,3 +43,9 @@ partie creation utilisateur
 https://www.loom.com/share/0df8159ce0654a5ca7db0317313ad0bc
 
 (pas de bug ;) c'est parce que la partie program n'est pas accesible au role SUBSCRIBER)
+
+Partie requete personnalisé
+
+https://www.loom.com/share/00775f5aea3a439d8d839ebdffb1cfc1
+
+

@@ -7,7 +7,6 @@ use App\Entity\Comment;
 use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
-use App\Entity\User;
 use App\Form\CategoryType;
 use App\Form\CommentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
