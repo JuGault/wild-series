@@ -10,6 +10,7 @@ use App\Entity\Season;
 use App\Entity\User;
 use App\Form\CategoryType;
 use App\Form\CommentType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -278,6 +279,7 @@ Class WildController extends AbstractController
      * @Route("/category_add/", name="category_add")
      * @param Request $request
      * @return Response A response instance
+     * @IsGranted("ROLE_ADMIN")
      */
     public function categoryAdd( Request $request) : Response
     {
