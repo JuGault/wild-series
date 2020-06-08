@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+{% endblock %}
+
+{% block title %} Mon profil {% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Mon compte: {{ user.username }} : </h1>
+    <ul>
+        <li>
+            <p>{{ user.email }}</p>
+        </li>
+        <li>
+            <p>{{ user.bio }}</p>
+        </li>
+        <li>
+            <p class="text-break">{{ user.password }}</p>
+        </li>
+    </ul>
+    <div class="my-5 d-flex justify-content-center">
+        <a class="btn btn-outline-primary"  href="{{ path('app_logout') }}">
+            Me deconnecter
+        </a>
+    </div>
+
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('index') }}
+{% endblock %}
