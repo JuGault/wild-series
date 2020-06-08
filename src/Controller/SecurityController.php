@@ -3,15 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\User;
+use App\Form\RegistrationFormType;
+use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -33,6 +42,22 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @Route("/my-profile", name="app_profile")
+     * @param Request $request
+     * @param UserInterface $user
+     * @return Response A response instance
+     */
+    public function myProfile(Request $request, UserInterface $user) : Response
+    {
+        $navCategories= $this->navbarCategory();
+        return $this->render('security/my-profile.html.twig', [
+            'nav_categories' => $navCategories,
+            'user' => $user,
+
+        ]);
+    }
+
+    /**
      * @Route("/logout", name="app_logout")
      */
     public function logout()
@@ -50,5 +75,49 @@ class SecurityController extends AbstractController
             );
         }
         return $categories;
+    }
+
+    /**
+     * @Route("/register", name="app_register")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param GuardAuthenticatorHandler $guardHandler
+     * @param LoginFormAuthenticator $authenticator
+     * @return Response
+     */
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    {
+        $navCategories= $this->navbarCategory();
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            // do anything else you need here, like send an email
+
+            return $guardHandler->authenticateUserAndHandleSuccess(
+                $user,
+                $request,
+                $authenticator,
+                'main' // firewall name in security.yaml
+            );
+        }
+
+        return $this->render('security/register.html.twig', [
+            'registrationForm' => $form->createView(),
+            'nav_categories' => $navCategories,
+        ]);
     }
 }
