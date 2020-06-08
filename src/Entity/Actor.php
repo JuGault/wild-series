@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -33,6 +34,11 @@ class Actor
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $birthday;
 
     public function __construct()
     {
@@ -90,6 +96,18 @@ class Actor
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?string
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday( string $birthday): self
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }

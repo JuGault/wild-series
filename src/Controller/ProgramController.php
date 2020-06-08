@@ -29,7 +29,7 @@ class ProgramController extends AbstractController
     {
         $navCategories= $this->navbarCategory();
         return $this->render('program/index.html.twig', [
-            'programs' => $programRepository->findAll(),
+            'programs' => $programRepository->findAllWithCategoryAndActors(),
             'nav_categories' => $navCategories,
         ]);
     }

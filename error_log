@@ -50,3 +50,9 @@
 [31-May-2020 17:34:02 UTC] PHP  14. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/config/Resource/ReflectionClassResource.php:105
 [31-May-2020 17:34:02 UTC] PHP  15. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
 [31-May-2020 21:43:44 UTC] 2020-05-31T21:43:44+00:00 [critical] Uncaught Error: syntax error, unexpected ')'
+[08-Jun-2020 10:54:30 UTC] 2020-06-08T10:54:29+00:00 [critical] Uncaught Error: syntax error, unexpected ';', expecting ',' or ')'
+[08-Jun-2020 10:54:48 UTC] 2020-06-08T10:54:48+00:00 [critical] Uncaught Error: syntax error, unexpected ';', expecting ',' or ')'
+[08-Jun-2020 10:55:43 UTC] 2020-06-08T10:55:43+00:00 [critical] Uncaught Error: syntax error, unexpected ';', expecting ',' or ')'
+[08-Jun-2020 10:55:46 UTC] 2020-06-08T10:55:46+00:00 [critical] Uncaught Error: syntax error, unexpected ';', expecting ',' or ')'
+[08-Jun-2020 11:10:24 UTC] 2020-06-08T11:10:24+00:00 [critical] Uncaught Error: syntax error, unexpected '$manager' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST)
+[08-Jun-2020 11:10:41 UTC] 2020-06-08T11:10:41+00:00 [critical] Uncaught Error: syntax error, unexpected '$manager' (T_VARIABLE), expecting function (T_FUNCTION) or const (T_CONST)
