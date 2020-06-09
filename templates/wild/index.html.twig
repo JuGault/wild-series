@@ -16,7 +16,7 @@
                 <div class="carousel-item col-md-4 {% if loop.first %}active{% endif %}">
                     <div class="card d-flex flex-row ">
                         <figure>
-                            <img src="{{ program.poster }}" alt="Card image cap">
+                            <img src="{{vich_uploader_asset (program, 'posterFile', 'App\\Entity\\Program')}}" alt="Card image cap">
                         </figure>
                         <div class="card-body">
                             <h4 class="card-title">{{ program.title }}</h4>

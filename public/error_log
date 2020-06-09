@@ -16,3 +16,5 @@
 [26-May-2020 19:28:28 UTC] PHP  10. spl_autoload_call() /home/wilder/wild-series/vendor/symfony/http-kernel/DependencyInjection/RegisterControllerArgumentLocatorsPass.php:165
 [26-May-2020 19:28:28 UTC] PHP  11. Symfony\Component\ErrorHandler\DebugClassLoader->loadClass() /home/wilder/wild-series/vendor/symfony/http-kernel/DependencyInjection/RegisterControllerArgumentLocatorsPass.php:165
 [26-May-2020 19:28:28 UTC] PHP  12. include() /home/wilder/wild-series/vendor/symfony/error-handler/DebugClassLoader.php:337
+[09-Jun-2020 18:08:37 UTC] 2020-06-09T18:08:37+00:00 [critical] Uncaught Exception: Service "App\Naming\MyNamer.poster_file": Parent definition "App\Naming\MyNamer" does not exist.
+[09-Jun-2020 18:09:23 UTC] 2020-06-09T18:09:23+00:00 [critical] Uncaught Exception: Service "App\Entity\Program.poster_file": Parent definition "App\Entity\Program" does not exist.

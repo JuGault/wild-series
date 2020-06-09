@@ -23,6 +23,7 @@ class ProgramRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->innerJoin('p.category', 'c' )
             ->addSelect('c')
+
             ->getQuery();
 
         return $qb->execute();
@@ -33,6 +34,8 @@ class ProgramRepository extends ServiceEntityRepository
             $qb = $this->createQueryBuilder('p')
                 ->innerJoin('p.category', 'c' )
                 ->addSelect('c')
+                ->leftJoin('p.actors', 'a')
+                ->addSelect('a')
                 ->getQuery();
 
             return $qb->execute();

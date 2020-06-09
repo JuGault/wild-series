@@ -11,7 +11,7 @@
     <h1>Votre série : </h1>
     <div class="card d-flex flex-row w-50">
         <figure class="col-5 p-0">
-            <img class="w-100" src="{{ program.poster }}" alt="Card image cap">
+            <img class="w-100" src="{{vich_uploader_asset (program, 'posterFile', 'App\\Entity\\Program')}}" alt="Card image cap">
         </figure>
         <div class="card-body col-7">
             <h4 class="card-title">{{ program.title }}</h4>

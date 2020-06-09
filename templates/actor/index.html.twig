@@ -1,35 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor index{% endblock %}
-
+{% block title %}Actors index{% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+{% endblock %}
 {% block body %}
-    <h1>Actor index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1 class="mt-3">Tous les acteurs</h1>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-outline-primary col-5" href="{{ path('actor_new') }}">Ajouter un acteur</a>
+    </div>
+    <div class="row col-12 d-flex justify-content-around">
         {% for actor in actors %}
-            <tr>
-                <td>{{ actor.id }}</td>
-                <td>{{ actor.name }}</td>
-                <td>
-                    <a href="{{ path('actor_show', {'slug': actor.slug}) }}">show</a>
-                    <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('actor_new') }}">Create new</a>
+            <div class="col-md-3 m-3 p-0  d-flex flex-column">
+                <div class=" card d-flex program-card flex-row">
+                    <figure class="col-4 p-0 ">
+                        <img class="h-100 col-12 p-0" src="{{vich_uploader_asset (actor, 'pictureFile', 'App\\Entity\\Actor')}}" alt="Card image cap">
+                    </figure>
+                    <div class="card-body overflow-auto">
+                        <h4 class="card-title">{{ actor.name }}</h4>
+                        <p class="card-text ">{{ actor.birthday }}</p>
+                        <p><strong>Series : </strong>{% if actor.programs is not empty %}{% set series = [] %}{%  for program in actor.programs %}{% set series = series|merge([program.title]) %}{% endfor %}{{ series|join(' , ')  }}{% else  %}Aucune series disponible{% endif %}</p>
+
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn-outline-primary col-5" href="{{ path('actor_show', {'slug': actor.slug}) }}">Voir</a>
+                    <a class="btn btn-outline-primary col-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Modifier</a>
+                </div>
+            </div>
+        {% else %}
+            Aucun acteur trouvé.
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
 {% endblock %}
