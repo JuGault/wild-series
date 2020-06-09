@@ -50,7 +50,7 @@ class ActorController extends AbstractController
             $actor->setSlug($slug);
             $entityManager->persist($actor);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Le nouvel acteur a bien été crée');
             return $this->redirectToRoute('actor_index');
         }
 
@@ -92,7 +92,7 @@ class ActorController extends AbstractController
             $slug = $slugify->generate($actor->getName());
             $actor->setSlug($slug);
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'L\'acteur a bien été mis à jour!');
             return $this->redirectToRoute('actor_index');
         }
 
@@ -116,7 +116,7 @@ class ActorController extends AbstractController
             $entityManager->remove($actor);
             $entityManager->flush();
         }
-
+        $this->addFlash('danger', 'L\'acteur a bien été supprimé');
         return $this->redirectToRoute('actor_index');
     }
     public function navbarCategory(): array

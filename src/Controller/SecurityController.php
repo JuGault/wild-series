@@ -15,6 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
+
 class SecurityController extends AbstractController
 {
     /**
@@ -106,7 +108,7 @@ class SecurityController extends AbstractController
             $entityManager->flush();
 
             // do anything else you need here, like send an email
-
+            $this->addFlash('success', 'Votre compte a bien été créé!');
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
                 $request,

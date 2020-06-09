@@ -49,7 +49,7 @@ class CommentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre commentaire a bien été posté');
             return $this->redirectToRoute('comment_index');
         }
 
@@ -90,7 +90,7 @@ class CommentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Votre commentaire a bien été mis à jour');
             return $this->redirectToRoute('comment_index');
         }
 
@@ -111,7 +111,7 @@ class CommentController extends AbstractController
             $entityManager->remove($comment);
             $entityManager->flush();
         }
-
+        $this->addFlash('danger', 'Votre commentaire a bien été supprimé');
         return $this->redirectToRoute('comment_index');
     }
     public function navbarCategory(): array

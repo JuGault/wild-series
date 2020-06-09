@@ -48,6 +48,10 @@ Partie requete personnalisé
 
 https://www.loom.com/share/00775f5aea3a439d8d839ebdffb1cfc1
 
+Partie message Flash
+
+https://www.loom.com/share/63ba490268e6425a8445e3b4a08ae6fd
+
 Partie Uploads Images
 
 https://www.loom.com/share/4e1b76eba1644fc38b1dcfe2d7e1d98d

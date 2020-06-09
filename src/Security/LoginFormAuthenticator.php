@@ -20,6 +20,8 @@ use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticato
 use Symfony\Component\Security\Guard\PasswordAuthenticatedInterface;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
+
+
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements PasswordAuthenticatedInterface
 {
     use TargetPathTrait;
@@ -93,9 +95,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
+            $this->addFlash('success', 'Authentifaction Réussi!');
             return new RedirectResponse($targetPath);
         }
-
          return new RedirectResponse($this->urlGenerator->generate('wild_index'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
