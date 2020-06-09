@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ActorType extends AbstractType
 {
@@ -15,14 +16,18 @@ class ActorType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('birthday')
             ->add('programs', EntityType::class, [
-        'expanded'=> 'true',
-        'multiple'=> 'true',
-        'class' => Program::class,
-        'choice_label' => 'title',
-        'by_reference' => false,])
-        ;
+                'multiple'=> 'true',
+                'class' => Program::class,
+                'choice_label' => 'title',
+                'by_reference' => false,])
 
+        ->add('pictureFile', VichFileType::class, [
+        'required'      => false,
+        'allow_delete'  => false,
+        'download_uri' => false,
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

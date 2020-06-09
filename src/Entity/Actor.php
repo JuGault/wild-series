@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ActorRepository::class)
+ * @Vich\Uploadable()
  */
 class Actor
 {
@@ -39,6 +43,20 @@ class Actor
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $birthday;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $picture;
+    /**
+     * @Vich\UploadableField(mapping="picture_file", fileNameProperty="picture")
+     * @var File
+     */
+    private $pictureFile;
+    /**
+     * @ORM\Column(type="datetime", nullable=True)
+     * @var DateTime
+     */
+    private $updateAt;
 
     public function __construct()
     {
@@ -110,5 +128,41 @@ class Actor
         $this->birthday = $birthday;
 
         return $this;
+    }
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+
+        $this->picture = $picture;
+
+        return $this;
+    }
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(\DateTimeInterface $updateAt): self
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+    public function setPictureFile(File $image = null): Actor
+    {
+        $this->pictureFile = $image;
+        if ($image) {
+            $this->updateAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
     }
 }

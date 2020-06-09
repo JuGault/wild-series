@@ -1,26 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Actor{% endblock %}
-
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('program') }}
+    {{ encore_entry_link_tags('programAdmin') }}
+{% endblock %}
 {% block body %}
-    <h1>Actor</h1>
+    <h1 class="my-3">{{ actor.name }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ actor.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ actor.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class=" card d-flex program-card flex-row  offset-2 col-8 h-50 p-0">
+        <figure class="col-4 p-0 m-0">
+            <img class="h-100 col-12 p-0" src="{{vich_uploader_asset (actor, 'pictureFile', 'App\\Entity\\Actor')}}" alt="Card image cap">
+        </figure>
+            <div class="card-body overflow-auto">
+                <h4 class="card-title">{{ actor.name }}</h4>
+                <p class="card-text ">{{ actor.birthday }}</p>
+                <p><strong>Series : </strong>{% if actor.programs is not empty %}{% set series = [] %}{%  for program in actor.programs %}{% set series = series|merge([program.title]) %}{% endfor %}{{ series|join(' , ')  }}{% else  %}Aucune series disponible{% endif %}</p>
 
-    <a href="{{ path('actor_index') }}">back to list</a>
+            </div>
+    </div>
 
-    <a href="{{ path('actor_edit', {'slug': actor.slug}) }}">edit</a>
+    <div class="d-flex flex-column">
+        <a class="btn btn-outline-primary col-5" href="{{ path('actor_edit', {'slug': actor.slug}) }}">Modifier</a>
+        {{ include('actor/_delete_form.html.twig') }}
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-primary col-5" href="{{ path('actor_index') }}">Retour aux acteurs</a>
 
-    {{ include('actor/_delete_form.html.twig') }}
+        </div>
+    </div>
+
 {% endblock %}

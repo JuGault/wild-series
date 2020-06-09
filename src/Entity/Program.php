@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @Vich\Uploadable()
  */
 class Program
 {
@@ -33,6 +37,12 @@ class Program
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $poster;
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     * @var File
+     */
+    private $posterFile;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -64,6 +74,13 @@ class Program
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=True)
+     * @var DateTime
+     */
+    private $updateAt;
+
 
     public function __construct()
     {
@@ -107,6 +124,7 @@ class Program
 
     public function setPoster(?string $poster): self
     {
+
         $this->poster = $poster;
 
         return $this;
@@ -147,7 +165,19 @@ class Program
 
         return $this;
     }
+    public function setPosterFile(File $image = null): Program
+    {
+        $this->posterFile = $image;
+        if ($image) {
+            $this->updateAt = new DateTime('now');
+        }
+        return $this;
+    }
 
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
     /**
      * @return Collection|Season[]
      */
@@ -215,6 +245,18 @@ class Program
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->updateAt;
+    }
+
+    public function setUpdateAt(\DateTimeInterface $updateAt): self
+    {
+        $this->updateAt = $updateAt;
 
         return $this;
     }

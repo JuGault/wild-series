@@ -17,7 +17,7 @@
             <div class="col-md-3 m-3 p-0  d-flex flex-column">
                 <div class=" card d-flex program-card flex-row">
                     <figure class="col-4 p-0 ">
-                        <img class="h-100 col-12 p-0" src="{{ program.poster }}" alt="Card image cap">
+                        <img class="h-100 col-12 p-0" src="{{vich_uploader_asset (program, 'posterFile', 'App\\Entity\\Program')}}" alt="Card image cap">
                     </figure>
                     <div class="card-body overflow-auto">
                         <h4 class="card-title">{{ program.title }}</h4>

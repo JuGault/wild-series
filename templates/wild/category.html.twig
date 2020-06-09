@@ -12,8 +12,8 @@
     <div class="row col-12 d-flex justify-content-between">
     {% for program in programs %}
             <div class="card col-md-5 my-3 p-0 category-card d-flex flex-row">
-                <figure class="">
-                    <img class="h-100 " src="{{ program.poster }}" alt="Card image cap">
+                <figure class="col-6 p-0">
+                    <img class="h-100 col-12 p-0" src="{{vich_uploader_asset (program, 'posterFile', 'App\\Entity\\Program')}}" alt="Card image cap">
                 </figure>
                 <div class="card-body">
                     <h4 class="card-title">{{ program.title }}</h4>
